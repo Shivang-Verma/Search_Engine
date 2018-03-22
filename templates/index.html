@@ -1,0 +1,53 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="../static/font_awesome/css/font_awesome.min.css">
+		<script type="text/javascript">
+			
+			function make_request(){
+				var $query = $('#Search_Box').val();
+				args = {query: $query};
+				$.ajax({url: '/search', type: 'GET', data: args,
+					error: function (data) {
+				    	console.log("In Error");
+						$('#output_text_id').val('<span>Error</span>');
+                    },
+                    success: function (data) {
+				    	console.log(data);
+						$('#output_text_id').empty();
+						$('#output_text_id').append(data);
+                    }
+				});
+			}
+		</script>
+	</head>
+
+	<style type="text/css">
+
+		input[type="text"]{
+			font-size: xx-large;
+			width: 920px;
+			background: transparent;
+			border: none;
+			border-bottom: 1px solid #000000;
+			-webkit-box-shadow: none;
+			box-shadow: none;
+			border-radius: 0;
+		}
+
+		input[type="text"]:focus {
+			width: 920px;
+		}
+	</style>
+
+	<body>
+		<div style="margin-top: 15%; margin-left: 20%">
+			<input type="text" id="Search_Box" name="SearchBox" placeholder="Search..">
+			<i id="search_icon" onclick="make_request()" class="fa fa-search fa-3x" aria-hidden="true"></i>
+		</div>
+		<br><br><br>
+		<div id="output_text_id" style="margin-left: 200px;"></div>
+	</body>
+</html>

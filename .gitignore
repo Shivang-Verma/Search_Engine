@@ -1,0 +1,8 @@
+Old_Versions/
+__pycache__/
+.idea/
+main.py
+Search_Engine.py
+Search_Engine.pyc
+Query.py
+Query.pyc
